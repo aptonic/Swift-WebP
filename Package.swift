@@ -13,7 +13,30 @@ let package = Package(
         .library(name: "WebP", targets: ["WebP"]),
     ],
     targets: [
-        .systemLibrary(name: "CWebP", pkgConfig: "libwebp", providers: [.brew(["webp"])]),
+        .target(
+            name: "libwebp",
+            path: "Sources/libwebp",
+            sources: [
+                "src/dec",
+                "src/demux",
+                "src/dsp",
+                "src/enc",
+                "src/mux",
+                "src/utils"
+            ],
+            publicHeadersPath: "include",
+            cSettings: [
+                .headerSearchPath("."),
+                .headerSearchPath("include"),
+                .define("HAVE_CONFIG_H", to: "0")
+            ]
+        ),
+        .target(
+            name: "CWebP",
+            dependencies: ["libwebp"],
+            path: "Sources/CWebP",
+            publicHeadersPath: "include"
+        ),
         .target(name: "WebP", dependencies: ["CWebP"]),
         .testTarget(name: "WebPTests", dependencies: ["WebP"]),
     ]

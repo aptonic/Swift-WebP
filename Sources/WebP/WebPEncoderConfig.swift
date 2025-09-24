@@ -124,8 +124,7 @@ public struct WebPEncoderConfig: InternalRawRepresentable {
     // value is 0.
     public var exact: Int
 
-    public var qmin: Int = 0
-    public var qmax: Int = 100
+    // Note: qmin/qmax removed in libwebp 1.0.3 - using defaults
 
     // reserved for future lossless feature
     var useDeltaPalette: Bool
@@ -165,8 +164,7 @@ public struct WebPEncoderConfig: InternalRawRepresentable {
         exact = Int(rawValue.exact)
         useDeltaPalette = rawValue.use_delta_palette != 0 ? true : false
         useSharpYUV = rawValue.use_sharp_yuv != 0 ? true : false
-        qmin = Int(rawValue.qmin)
-        qmax = Int(rawValue.qmax)
+        // qmin/qmax not available in libwebp 1.0.3
     }
 
     internal var rawValue: CWebP.WebPConfig {
@@ -204,8 +202,7 @@ public struct WebPEncoderConfig: InternalRawRepresentable {
             exact: Int32(exact),
             use_delta_palette: Int32(use_delta_palette),
             use_sharp_yuv: Int32(use_sharp_yuv),
-            qmin: Int32(qmin),
-            qmax: Int32(qmax)
+            pad: (0, 0)
         )
     }
 

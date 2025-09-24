@@ -1,5 +1,4 @@
-module CWebP [system] {
+module CWebP {
     umbrella header "CWebP-umbrella.h"
-    link "webp"
     export *
 }
