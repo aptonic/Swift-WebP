@@ -14,7 +14,7 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "libwebp",
+            name: "CWebP",
             path: "Sources/libwebp",
             sources: [
                 "src/dec",
@@ -30,12 +30,6 @@ let package = Package(
                 .headerSearchPath("include"),
                 .define("HAVE_CONFIG_H", to: "0")
             ]
-        ),
-        .target(
-            name: "CWebP",
-            dependencies: ["libwebp"],
-            path: "Sources/CWebP",
-            publicHeadersPath: "include"
         ),
         .target(name: "WebP", dependencies: ["CWebP"]),
         .testTarget(name: "WebPTests", dependencies: ["WebP"]),

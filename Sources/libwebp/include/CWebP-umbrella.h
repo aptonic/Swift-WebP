@@ -6,6 +6,6 @@
 //  Copyright © 2016年 satoshi.namai. All rights reserved.
 //
 
-#include "../../libwebp/include/webp/encode.h"
-#include "../../libwebp/include/webp/decode.h"
-#include "../../libwebp/include/webp/types.h"
+#include "webp/encode.h"
+#include "webp/decode.h"
+#include "webp/types.h"
