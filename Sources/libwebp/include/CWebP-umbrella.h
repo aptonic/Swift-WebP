@@ -6,6 +6,10 @@
 //  Copyright © 2016年 satoshi.namai. All rights reserved.
 //
 
-#include "webp/encode.h"
 #include "webp/decode.h"
+#include "webp/demux.h"
+#include "webp/encode.h"
+#include "webp/format_constants.h"
+#include "webp/mux.h"
+#include "webp/mux_types.h"
 #include "webp/types.h"
